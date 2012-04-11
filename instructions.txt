@@ -19,6 +19,3 @@ g++ -O2 -o <outputfile name> <file-name.cpp> `Magick++-config
 notice that that is a capital O2 not a zero 2
 
 
-right now it only runs if there is a png image 
-in your same directory called ball.png but you can change that to any 
-image you want.
