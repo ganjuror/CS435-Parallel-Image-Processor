@@ -13,7 +13,7 @@ YOU GOT IT!
 
 Now if you want to run the program make sure to use c++ in the following way
 
-gcc -O2 -o <outputfile name> <file-name.cpp> `Magick++-config 
+g++ -O2 -o <outputfile name> <file-name.cpp> `Magick++-config 
 --cppflags --cxxflags --ldflags --libs`
 
 notice that that is a capital O2 not a zero 2
