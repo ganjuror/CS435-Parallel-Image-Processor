@@ -1,6 +1,4 @@
-A program that manipulates images using the imagemagick++ library and demonstrates parallelization using OpenMP and will
-be ran on the LittleFe supercomputer/cluster system.  This is a project for Humboldt State University's Software Engineering
-Class.
+A program that manipulates images using the imagemagick++ library and demonstrates parallelization using OpenMP and will be ran on the LittleFe supercomputer/cluster system.  This is a project for Humboldt State University's Software Engineering Class.
 
 Feel free to poke around with the code as much as you like!
 
