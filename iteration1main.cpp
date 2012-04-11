@@ -87,7 +87,7 @@ int main()
 	    	char path[1035];
 
 	    	/*open the command for reading. */
-	    	fp = popen("/bin/ls ~/Documents/CS435-Parallel-Image-Processor/", "r");		//Open ls command and run it on the given directory
+	    	fp = popen("/bin/ls ~/project/", "r");		//Open ls command and run it on the given directory
 	    	if(fp ==NULL)
 	    	{
 	      		printf("Failed to run command \n");
