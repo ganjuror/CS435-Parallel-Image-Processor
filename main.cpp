@@ -16,8 +16,14 @@ help the user make their selection.  The program consists of 2-3 parts:
 	**I cant get it to return the right string and I'm bored and hungry Ill fix it later.
 
 
+	Program: Main program (calls subfunctions)
+	Author:David Dvorak, Shaun Piazza
+	Purpose:allows user input to select an input file, a filter, and whether or not it should run parallel
 
-	Last Modified: March 28, 2012
+
+
+
+	Last Modified: April 10, 2012
 */
 
 
@@ -37,8 +43,8 @@ int main()
 	char input_array[INPUTLEN];
 	char node_array[INPUTLEN];
 	int i;  //Stores the length of entered strings
-    struct timeval start, end;
-    long mtime, seconds, useconds; 	
+	struct timeval start, end;
+	long mtime, seconds, useconds; 	
 
 
 	printf ("**********************************************\n");
@@ -50,14 +56,14 @@ int main()
 	printf ("Enter 3 to derp an image: \n");
 	fgets(input_array,INPUTLEN, stdin );
 	
-		for ( i = 0; i < INPUTLEN; i++ ) 
+	for ( i = 0; i < INPUTLEN; i++ ) 
+	{
+		if ( input_array[i] == '\n' ) 
 		{
-			if ( input_array[i] == '\n' ) 
-			{
-				input_array[i] = '\0';
-				break;
-			}
-		}		
+			input_array[i] = '\0';
+			break;
+		}
+	}		
 	
 	printf("You selected %s! \n", input_array);
 	
@@ -74,24 +80,24 @@ int main()
 		This is a section of code that executes the ls command on a given directory
 		*/
 		FILE *fp;
-    	int status;
-    	char path[1035];
+	    	int status;
+	    	char path[1035];
 
-    	/*open the command for reading. */
-    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
-    	if(fp ==NULL)
-    	{
-      		printf("Failed to run command \n");
-    	}
+	    	/*open the command for reading. */
+	    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
+	    	if(fp ==NULL)
+	    	{
+	      		printf("Failed to run command \n");
+	    	}
 
-    	/*Read the output a line at a time */
-    	while(fgets(path, sizeof(path)-1, fp) != NULL)
+	    	/*Read the output a line at a time */
+	    	while(fgets(path, sizeof(path)-1, fp) != NULL)
 		{
 			printf("%s", path);
-    	}
+	    	}
 
-    /*close */
-    pclose(fp);
+		/*close */
+		pclose(fp);
 	
 	//************ END OF LS COMMAND ************************
 		printf("\n");
@@ -131,7 +137,7 @@ int main()
 		
 		gettimeofday(&end, NULL);
 
-	    seconds  = end.tv_sec  - start.tv_sec;
+	    	seconds  = end.tv_sec  - start.tv_sec;
 		useconds = end.tv_usec - start.tv_usec;
 
 		mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
@@ -153,28 +159,29 @@ int main()
 		This is a section of code that executes the ls command on a given directory
 		*/
 		FILE *fp;
-    	int status;
-    	char path[1035];
+	    	int status;
+	    	char path[1035];
 
-    	/*open the command for reading. */
-    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
-    	if(fp ==NULL)
-    	{
-      		printf("Failed to run command \n");
-      	//exit;
+	    	/*open the command for reading. */
+	    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
+	    	if(fp ==NULL)
+	    	{
+	      		printf("Failed to run command \n");
+	      	//exit;
 
-    	}
+	    	}
 
-    	/*Read the output a line at a time */
-    	while(fgets(path, sizeof(path)-1, fp) != NULL){
-      	printf("%s", path);
+	    	/*Read the output a line at a time */
+	    	while(fgets(path, sizeof(path)-1, fp) != NULL)
+		{
+	      		printf("%s", path);
+    		}
 
-    	}
-
-    /*close */
-    pclose(fp);
+		/*close */
+		pclose(fp);
 	
-	//************ END OF LS COMMAND ************************
+		//************ END OF LS COMMAND ************************
+
 		printf("\n");
 		printf("Please select an image to negate: ");
 		fgets(pic_name,PICLEN, stdin);
@@ -211,7 +218,7 @@ int main()
 		
 		gettimeofday(&end, NULL);
 
-	    seconds  = end.tv_sec  - start.tv_sec;
+		seconds  = end.tv_sec  - start.tv_sec;
 		useconds = end.tv_usec - start.tv_usec;
 
 		mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
@@ -233,28 +240,26 @@ int main()
 		This is a section of code that executes the ls command on a given directory
 		*/
 		FILE *fp;
-    	int status;
-    	char path[1035];
+	    	int status;
+	    	char path[1035];
 
-    	/*open the command for reading. */
-    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
-    	if(fp ==NULL)
-    	{
-      		printf("Failed to run command \n");
-      	//exit;
+	    	/*open the command for reading. */
+	    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
+	    	if(fp ==NULL)
+	    	{
+	      		printf("Failed to run command \n");
+	    	}
 
-    	}
+	    	/*Read the output a line at a time */
+	    	while(fgets(path, sizeof(path)-1, fp) != NULL)
+		{
+	      		printf("%s", path);
+	    	}
 
-    	/*Read the output a line at a time */
-    	while(fgets(path, sizeof(path)-1, fp) != NULL){
-      	printf("%s", path);
-
-    	}
-
-    /*close */
-    pclose(fp);
+		/*close */
+		pclose(fp);
 	
-	//************ END OF LS COMMAND ************************
+		//************ END OF LS COMMAND ************************
 		printf("\n");
 		printf("Please select an image to do SOMETHING TO: ");
 		fgets(pic_name,PICLEN, stdin);
@@ -291,7 +296,7 @@ int main()
 		
 		gettimeofday(&end, NULL);
 
-	    seconds  = end.tv_sec  - start.tv_sec;
+		seconds  = end.tv_sec  - start.tv_sec;
 		useconds = end.tv_usec - start.tv_usec;
 
 		mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
