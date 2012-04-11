@@ -16,25 +16,25 @@ int main()
 {
 	
 	
-	//make an image called test that we will use as the input image
-	Image test;
+	//make an image called inputter that we will use as the input image
+	Image inputter;
 	//make an image called output that we will use as the output image
 	Image output;
 	//load the ball.png into the input image
-	test.read("ball.png");
+	inputter.read("ball.png");
 	
 	//Get the number of columns and rows in the image
-	int columns =test.columns();
-	int rows = test.rows();
+	int columns =inputter.columns();
+	int rows = inputter.rows();
 	
 	//make image Direct class so we can access the colors of each pixel (because pngs are funkayyy)
-	test.classType(DirectClass);
+	inputter.classType(DirectClass);
 	
 	//Set this bad boy up for manipulation	
-	test.modifyImage();
+	inputter.modifyImage();
 	
 	//Allocate some memories for each pixel
-	PixelPacket *all_pixels = test.getPixels(0,0,columns, rows);
+	PixelPacket *all_pixels = inputter.getPixels(0,0,columns, rows);
 
 	//Make a place to grab the rgba values
 	Quantum red, green, blue, opacity; 
@@ -62,9 +62,9 @@ int main()
 
 	}	
 			//Sync the pixels up
-			test.syncPixels();
+			inputter.syncPixels();
 			//output the new image to a file called output.png
-			test.write("output.png");
+			inputter.write("output.png");
 
 
 
