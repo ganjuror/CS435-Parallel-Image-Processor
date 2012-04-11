@@ -1,0 +1,2 @@
+A program that manipulates images using the imagemagick++ library and demonstrates parallelization using OpenMP.
+This project will run on LittleFe.
