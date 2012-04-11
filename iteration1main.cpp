@@ -1,24 +1,15 @@
-/* Main program to call the functions for each image filter.  This expects no parameters and uses user input and output to 
-help the user make their selection.  The program consists of 2-3 parts:
-	part 1: Show the user they have entered the editor, and show the possible selections
-	part 2: Based on the user's selection, it shows them their selection, then prints all the images in their image directory
-	(which I am assuming are the possible choices), and then asks for the user to select a given image.
-	part 3: based on the selected image a function is called to do the selected filter.
-
-	Thats as far as I've gotten so far.
-
-
-	SIDE NOTE:  Right now this only runs on Unix based systems, since we will be using nrs-projects it will work, I haven't tested it
-	on my mac but all you would have to change is the directory that the ls command is stored in (if it is stores somewhere different),
-	it also assumes that the folder you are storing the images in are in ~/Dropbox/Project.  If you want to run it on your computers then
-	just change the directory.
-
-	**I cant get it to return the right string and I'm bored and hungry Ill fix it later.
-
-
-	Program: Main program (calls subfunctions)
+/* 
+	Program: Main program (calls subfunction)
 	Author:David Dvorak, Shaun Piazza
-	Purpose:allows user input to select an input file, a filter, and whether or not it should run parallel
+	Purpose:allows user input to select an input file, a filter, and whether or not it should run parallel, it should then output a file named 			output.png with the applied filter
+
+***********************************************************NOTICE************************************************************************************
+This file is for iteration one only.  The only things left on the to-do list are:
+
+	1.move redfilter to an external file
+	2.add the pragmas to redfilter
+	3.Fix the Node_array section as it doesn't pertain to what we are doing anymore
+	4.Add logic so if not running in parallel, no pragmas will be used.
 
 
 
@@ -42,7 +33,9 @@ using namespace Magick;
 using namespace std;
 
 
-void redfilter();
+
+//Redfilter expects a filename which the user is prompted for below
+void redfilter(string filename);
 
 
 
@@ -94,7 +87,7 @@ int main()
 	    	char path[1035];
 
 	    	/*open the command for reading. */
-	    	fp = popen("/bin/ls ~/project", "r");		//Open ls command and run it on the given directory
+	    	fp = popen("/bin/ls ~/Documents/CS435-Parallel-Image-Processor/", "r");		//Open ls command and run it on the given directory
 	    	if(fp ==NULL)
 	    	{
 	      		printf("Failed to run command \n");
@@ -140,10 +133,8 @@ int main()
 		
 		gettimeofday(&start, NULL);
 		
-		//Now we would call the function that does the red filter
-
-		//NOTE: we need to eventually let this function take a filename as input but for now lets keep it void.	
-		redfilter();
+		//Call redfilter with pic_name as its parameter
+		redfilter(pic_name);
 		// Uncomment the usleep() function below to test the timer
 		//usleep(9000);
 		
@@ -164,8 +155,8 @@ int main()
 ////////////////////////////////////////////////END MAIN//////////////////////////////////////////////////////////////////
 
 
-
-void redfilter()
+/*This needs to be moved to an external file at some point, but for now it works! */
+void redfilter(string filename)
 {
 	
 	
@@ -173,8 +164,8 @@ void redfilter()
 	Image inputter;
 	//make an image called output that we will use as the output image
 	Image output;
-	//load the tester.png into the input image
-	inputter.read("tester.png");
+	//read the passed in filename
+	inputter.read(filename);
 	
 	//Get the number of columns and rows in the image
 	int columns =inputter.columns();
