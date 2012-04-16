@@ -54,29 +54,8 @@ int main()
 
 	printf ("**********************************************\n");
 	printf ("WELCOME TO THE IMAGE EDITOR OF THE FUTURE \n");
-	printf ("**********************************************\n");
-	printf ("Please enter a number to select from the following choices: \n");
-	printf ("Enter 1 to Red Filter an image: \n");
-	fgets(input_array,INPUTLEN, stdin );
-	
-	for ( i = 0; i < INPUTLEN; i++ ) 
-	{
-		if ( input_array[i] == '\n' ) 
-		{
-			input_array[i] = '\0';
-			break;
-		}
-	}		
-	
-	printf("You selected %s! \n", input_array);
-	
-	if(input_array[0] == '1')
-	{
-		printf("\n");
-		printf("**************************************\n");
-		printf("RED FILTER TOOL \n");
-		printf("**************************************\n");
-		printf("Here are all the files located in your image directory: ");
+	printf("**************************************\n");
+	printf("Here are all the files located in your image directory: ");
 
 
 		/*WE WILL MOVE THIS TO ANOTHER FILE BUT IM HACKING THE CRAP OUT OF IT RIGHT NOW :
@@ -102,21 +81,48 @@ int main()
 		/*close */
 		pclose(fp);
 	
-	//************ END OF LS COMMAND ************************
-		printf("\n");
-		printf("Please select an image to Red Filter: ");
-		fgets(pic_name,PICLEN, stdin);
+	//************ END OF LS COMMAND ************************	
+	
+	printf("Please select an image to filter: ");
+
+	fgets(pic_name,PICLEN, stdin);
 		
-		for ( i = 0; i < PICLEN; i++ ) 
+	for ( i = 0; i < PICLEN; i++ ) 
+	{
+		if ( pic_name[i] == '\n' ) 
 		{
-			if ( pic_name[i] == '\n' ) 
-			{
-				pic_name[i] = '\0';
-				break;
-			}
+			pic_name[i] = '\0';
+			break;
 		}
-		
-		printf("You selected %s as your picture\n", pic_name);
+	}
+	
+	printf("You selected %s as your picture\n", pic_name);	
+	
+	
+	printf ("**********************************************\n");
+	printf ("Please enter a number to select from the following choices: \n");
+	printf ("Enter 1 to Red Filter an image: \n");
+	fgets(input_array,INPUTLEN, stdin );
+	
+	for ( i = 0; i < INPUTLEN; i++ ) 
+	{
+		if ( input_array[i] == '\n' ) 
+		{
+			input_array[i] = '\0';
+			break;
+		}
+	}		
+	
+	printf("You selected %s! \n", input_array);
+	
+	if(input_array[0] == '1')
+	{
+		printf("\n");
+		printf("**************************************\n");
+		printf("RED FILTER TOOL \n");
+
+		printf("\n");
+
 		printf("Would you like to run this in parallel? \n");
 		fgets(node_array,INPUTLEN, stdin );
 		
