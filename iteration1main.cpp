@@ -33,7 +33,8 @@ using namespace Magick;
 using namespace std;
 
 
-
+//printFiles() expects no arguments and prints all files in users current working directory
+void printFiles();
 //Redfilter expects a filename which the user is prompted for below
 void redfilter(string filename);
 
@@ -57,31 +58,7 @@ int main()
 	printf("**************************************\n");
 	printf("Here are all the files located in your image directory: ");
 
-
-		/*WE WILL MOVE THIS TO ANOTHER FILE BUT IM HACKING THE CRAP OUT OF IT RIGHT NOW :
-		This is a section of code that executes the ls command on a given directory
-		*/
-		FILE *fp;
-	    	int status;
-	    	char path[1035];
-
-	    	/*open the command for reading. */
-	    	fp = popen("/bin/ls ~/project/", "r");		//Open ls command and run it on the given directory
-	    	if(fp ==NULL)
-	    	{
-	      		printf("Failed to run command \n");
-	    	}
-
-	    	/*Read the output a line at a time */
-	    	while(fgets(path, sizeof(path)-1, fp) != NULL)
-		{
-			printf("%s", path);
-	    	}
-
-		/*close */
-		pclose(fp);
-	
-	//************ END OF LS COMMAND ************************	
+	printFiles();	
 	
 	printf("Please select an image to filter: ");
 
@@ -97,7 +74,9 @@ int main()
 	}
 	
 	printf("You selected %s as your picture\n", pic_name);	
-	
+	/* "Unit test" */
+	printf("EXPECTED: %s ACTUAL: %s\n", pic_name, pic_name);
+	/* End of test */
 	
 	printf ("**********************************************\n");
 	printf ("Please enter a number to select from the following choices: \n");
@@ -114,6 +93,9 @@ int main()
 	}		
 	
 	printf("You selected %s! \n", input_array);
+	/* "Unit test" */
+	printf("EXPECTED: 1, ACTUAL: %s\n", input_array);
+	/* End of test */
 	
 	if(input_array[0] == '1')
 	{
@@ -138,6 +120,9 @@ int main()
 		}		
 		
 		printf("You selected %s \n", node_array);
+		/* "Unit test" */
+		printf("EXPECTED: yes or no ACTUAL: %s\n", node_array);
+		/* End of test */
 		
 		if(node_array[0] == 'y')
 		{
@@ -186,6 +171,33 @@ int main()
 
 ////////////////////////////////////////////////END MAIN//////////////////////////////////////////////////////////////////
 
+	/*WE WILL MOVE THIS TO ANOTHER FILE BUT IM HACKING THE CRAP OUT OF IT RIGHT NOW :
+		This is a section of code that executes the ls command on a given directory
+		*/
+void printFiles()
+{
+		FILE *fp;
+	    	int status;
+	    	char path[1035];
+
+	    	/*open the command for reading. */
+	    	fp = popen("/bin/ls ~/project/", "r");		//Open ls command and run it on the given directory
+	    	if(fp ==NULL)
+	    	{
+	      		printf("Failed to run command \n");
+	    	}
+
+	    	/*Read the output a line at a time */
+	    	while(fgets(path, sizeof(path)-1, fp) != NULL)
+		{
+			printf("%s", path);
+	    	}
+
+		/*close */
+		pclose(fp);
+	
+	//************ END OF LS COMMAND ************************
+}
 
 /*This needs to be moved to an external file at some point, but for now it works! */
 void redfilter(string filename)
