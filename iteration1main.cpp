@@ -124,7 +124,8 @@ int main()
 		printf("\n");
 
 		printf("Would you like to run this in parallel?\n");
-		printf("y or n: ");
+		printf("y or n: \n");
+		
 		fgets(node_array,INPUTLEN, stdin );
 		
 		for ( i = 0; i < INPUTLEN; i++ ) 
