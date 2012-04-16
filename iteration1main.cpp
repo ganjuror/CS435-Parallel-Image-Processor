@@ -18,7 +18,7 @@ This file is for iteration one only.  The only things left on the to-do list are
 */
 
 
-
+#include <omp.h>
 #include <Magick++.h>
 #include <sys/time.h>
 #include <stdio.h>
@@ -123,7 +123,8 @@ int main()
 
 		printf("\n");
 
-		printf("Would you like to run this in parallel? \n");
+		printf("Would you like to run this in parallel?\n");
+		printf("y or n: ");
 		fgets(node_array,INPUTLEN, stdin );
 		
 		for ( i = 0; i < INPUTLEN; i++ ) 
@@ -137,21 +138,45 @@ int main()
 		
 		printf("You selected %s \n", node_array);
 		
-		gettimeofday(&start, NULL);
-		
-		//Call redfilter with pic_name as its parameter
-		redfilter(pic_name);
-		// Uncomment the usleep() function below to test the timer
-		//usleep(9000);
-		
-		gettimeofday(&end, NULL);
+		if(node_array[0] == 'y')
+		{
+			#pragma omp parallel
+			{
+				gettimeofday(&start, NULL);
+				
+				//Call redfilter with pic_name as its parameter
+				redfilter(pic_name);
+				// Uncomment the usleep() function below to test the timer
+				//usleep(9000);
+				
+				gettimeofday(&end, NULL);
 
-	    	seconds  = end.tv_sec  - start.tv_sec;
-		useconds = end.tv_usec - start.tv_usec;
+				seconds  = end.tv_sec  - start.tv_sec;
+				useconds = end.tv_usec - start.tv_usec;
 
-		mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
+				mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
 
-		printf("Elapsed time: %ld milliseconds\n", mtime);
+				printf("Elapsed time: %ld milliseconds\n", mtime);
+			}
+		}
+		else
+		{
+			gettimeofday(&start, NULL);
+			
+			//Call redfilter with pic_name as its parameter
+			redfilter(pic_name);
+			// Uncomment the usleep() function below to test the timer
+			//usleep(9000);
+			
+			gettimeofday(&end, NULL);
+
+			seconds  = end.tv_sec  - start.tv_sec;
+			useconds = end.tv_usec - start.tv_usec;
+
+			mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
+
+			printf("Elapsed time: %ld milliseconds\n", mtime);		
+		}
 
 
 	}
