@@ -39,6 +39,8 @@ string pic_check[CHECKLEN];
 void printFiles();
 //Redfilter expects a filename which the user is prompted for below
 void redfilter(string filename);
+//toGrayscale expect a filename (.png) which the user is propted for below and creates a file out that is a grayscale version of the input
+void toGrayscale(string filename);
 
 int main()
 {	
@@ -397,11 +399,3 @@ void toGrayscale(string filename)
 	//output the new image to a file called gray_output.png
 	inputter.write("gray_output.png");
 }
-
-
-
-
-
-
-
-
