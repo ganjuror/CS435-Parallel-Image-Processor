@@ -4,7 +4,7 @@
 	Purpose:allows user input to select an input file, a filter, and whether or not it should run parallel, it should then output a file named 			output.png with the applied filter
 
 ***********************************************************NOTICE************************************************************************************
-This file is for iteration one only.  The only things left on the to-do list are:
+This file is for iteration two only.  The only things left on the to-do list are:
 
 	1.move redfilter to an external file
 	2.add the pragmas to redfilter
@@ -25,11 +25,9 @@ This file is for iteration one only.  The only things left on the to-do list are
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <iostream>
 #define INPUTLEN 4
 #define PICLEN 50
 #define CHECKLEN 50
-#define NUMLEN 2
 
 using namespace Magick;
 using namespace std;
@@ -48,7 +46,6 @@ int main()
 	char input_array[INPUTLEN];
 	char node_array[INPUTLEN];
 	bool correctImage = false;
-	bool correctNum = false;
 	int i;  // Stores the length of entered strings
 	string curName; // string to hold the current user input	
 	struct timeval start, end;
