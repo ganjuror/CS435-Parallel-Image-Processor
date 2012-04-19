@@ -108,7 +108,7 @@ int main()
 	
 	printf("You selected %s! \n", input_array);
 	/* "Unit test" */
-	printf("EXPECTED: 1 or 2, ACTUAL: %s\n", input_array[0]);
+	printf("EXPECTED: 1 or 2, ACTUAL: %s\n", input_array);
 	/* End of test */
 	
 	if(input_array[0] == '1')
