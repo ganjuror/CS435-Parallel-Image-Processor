@@ -99,13 +99,14 @@ int main()
 	
 	printf ("**********************************************\n");
 	printf ("Please enter a number to select from the following choices: \n");
-	printf ("Enter 1 to Red Filter an image: \n");
+	printf ("Enter 1 to Red Filter your image.\n");
+	printf ("Enter 2 to Grayscale Filter your image.\n")
 	
 	fgets(input_array,INPUTLEN, stdin);
 	
 	printf("You selected %s! \n", input_array);
 	/* "Unit test" */
-	printf("EXPECTED: 1, ACTUAL: %s\n", input_array);
+	printf("EXPECTED: 1 or 2, ACTUAL: %s\n", input_array[0]);
 	/* End of test */
 	
 	if(input_array[0] == '1')
@@ -162,6 +163,76 @@ int main()
 			
 			//Call redfilter with pic_name as its parameter
 			redfilter(pic_name);
+			// Uncomment the usleep() function below to test the timer
+			//usleep(9000);
+			
+			gettimeofday(&end, NULL);
+
+			seconds  = end.tv_sec  - start.tv_sec;
+			useconds = end.tv_usec - start.tv_usec;
+
+			mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
+
+			printf("Elapsed time: %ld milliseconds\n", mtime);		
+		}
+
+
+	}
+	
+	if(input_array[0] == '2')
+	{
+		printf("\n");
+		printf("**************************************\n");
+		printf("GRAYSCALE TOOL\n");
+
+		printf("\n");
+
+		printf("Would you like to run this in parallel?\n");
+		printf("y or n: \n");
+		
+		fgets(node_array,INPUTLEN, stdin );
+		
+		for ( i = 0; i < INPUTLEN; i++ ) 
+		{
+			if ( node_array[i] == '\n' ) 
+			{
+				node_array[i] = '\0';
+				break;
+			}
+		}		
+		
+		printf("You selected %s \n", node_array);
+		/* "Unit test" */
+		printf("EXPECTED: yes or no ACTUAL: %s\n", node_array);
+		/* End of test */
+		
+		if(node_array[0] == 'y')
+		{
+			#pragma omp parallel
+			{
+				gettimeofday(&start, NULL);
+				
+				//Call redfilter with pic_name as its parameter
+				toGrayscale(pic_name);
+				// Uncomment the usleep() function below to test the timer
+				//usleep(9000);
+				
+				gettimeofday(&end, NULL);
+
+				seconds  = end.tv_sec  - start.tv_sec;
+				useconds = end.tv_usec - start.tv_usec;
+
+				mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
+
+				printf("Elapsed time: %ld milliseconds\n", mtime);
+			}
+		}
+		else
+		{
+			gettimeofday(&start, NULL);
+			
+			//Call redfilter with pic_name as its parameter
+			toGrayscale(pic_name);
 			// Uncomment the usleep() function below to test the timer
 			//usleep(9000);
 			
@@ -275,6 +346,57 @@ void redfilter(string filename)
 
 }
 
+/* This function takes a filename as an argument (must be .png) and creates a file called gray_output.png that is a grayscale
+version of the argument file */
+
+void toGrayscale(string filename)
+{
+	
+	
+	//make an image called inputter that we will use as the input image
+	Image inputter;
+	//make an image called output that we will use as the output image
+	Image output;
+	//read the passed in filename
+	inputter.read(filename);
+	
+	//Get the number of columns and rows in the image
+	int columns =inputter.columns();
+	int rows = inputter.rows();
+	
+	//make image Direct class so we can access the colors of each pixel (because pngs are funkayyy)
+	inputter.classType(DirectClass);
+	
+	//Set this bad boy up for manipulation	
+	inputter.modifyImage();
+	
+	//Allocate some memories for each pixel
+	PixelPacket *all_pixels = inputter.getPixels(0,0,columns, rows);
+
+	//Make a place to grab the rgba values
+	Quantum graycolor; 
+
+	//For every single pixel
+	for(ssize_t i=0; i< columns*rows; i++)
+	{
+
+		//We will acomplish the grayscale setting all the RGB values to the same value as determined by recomendation BT.709
+		//"Basic Parameter Values for the Studio and International Programme Exchange"
+
+		//Setting graycolor to ITU-R recomendation
+		graycolor = all_pixels[i].red * 0.2125 + all_pixels[i].green * 0.7154 + all_pixels[i].blue = 0.0721;
+
+		all_pixels[i].red = graycolor;
+		all_pixels[i].green = graycolor;
+		all_pixels[i].blue = graycolor;
+		all_pixels[i].opacity= 0;
+					
+	}
+	//Sync the pixels up
+	inputter.syncPixels();
+	//output the new image to a file called gray_output.png
+	inputter.write("gray_output.png");
+}
 
 
 
