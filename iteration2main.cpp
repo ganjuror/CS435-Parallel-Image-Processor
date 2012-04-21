@@ -102,7 +102,7 @@ int main()
 	printf ("**********************************************\n");
 	printf ("Please enter a number to select from the following choices: \n");
 	printf ("Enter 1 to Red Filter your image.\n");
-	printf ("Enter 2 to Grayscale Filter your image.\n")
+	printf ("Enter 2 to Grayscale Filter your image.\n");
 	
 	fgets(input_array,INPUTLEN, stdin);
 	
@@ -386,7 +386,7 @@ void toGrayscale(string filename)
 		//"Basic Parameter Values for the Studio and International Programme Exchange"
 
 		//Setting graycolor to ITU-R recomendation
-		graycolor = all_pixels[i].red * 0.2125 + all_pixels[i].green * 0.7154 + all_pixels[i].blue = 0.0721;
+		graycolor = all_pixels[i].red * 0.2125 + all_pixels[i].green * 0.7154 + all_pixels[i].blue * 0.0721;
 
 		all_pixels[i].red = graycolor;
 		all_pixels[i].green = graycolor;
