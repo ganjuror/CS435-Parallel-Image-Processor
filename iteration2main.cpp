@@ -111,6 +111,22 @@ int main()
 	printf("EXPECTED: 1 or 2, ACTUAL: %s\n", input_array);
 	/* End of test */
 	
+	
+	/* ERROR CHECKING LOOP */
+	while((input_array[0] != '1') && (input_array[0] != '2'))
+	{
+		printf ("**********************************************\n");
+		printf ("You entered an incorrect value, please try again.");
+		printf ("Please enter a number to select from the following choices: \n");
+		printf ("Enter 1 to Red Filter your image.\n");
+		printf ("Enter 2 to Grayscale Filter your image.\n");
+	
+		fgets(input_array,INPUTLEN, stdin);
+	
+		printf("You selected %s! \n", input_array);
+	}
+	/* **** END ERROR CHECKING LOOP **** */
+	
 	if(input_array[0] == '1')
 	{
 		printf("\n");
@@ -137,6 +153,7 @@ int main()
 		/* "Unit test" */
 		printf("EXPECTED: yes or no ACTUAL: %s\n", node_array);
 		/* End of test */
+		
 		
 		if(node_array[0] == 'y')
 		{
