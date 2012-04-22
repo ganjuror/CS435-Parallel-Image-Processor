@@ -125,7 +125,7 @@ int main()
 	while((input_array[0] != '1') && (input_array[0] != '2'))
 	{
 		printf ("**********************************************\n");
-		printf ("You entered an incorrect value, please try again.");
+		printf ("You entered an incorrect value, please try again.\n");
 		printf ("Please enter a number to select from the following choices: \n");
 		printf ("Enter 1 to Red Filter your image.\n");
 		printf ("Enter 2 to Grayscale Filter your image.\n");
