@@ -106,6 +106,15 @@ int main()
 	
 	fgets(input_array,INPUTLEN, stdin);
 	
+	for ( i = 0; i < INPUTLEN; i++ ) 
+	{
+		if ( input_array[i] == '\n' ) 
+		{
+			input_array[i] = '\0';
+			break;
+		}
+	}
+	
 	printf("You selected %s! \n", input_array);
 	/* "Unit test" */
 	printf("EXPECTED: 1 or 2, ACTUAL: %s\n", input_array);
