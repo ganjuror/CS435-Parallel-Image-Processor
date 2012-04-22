@@ -122,6 +122,15 @@ int main()
 		printf ("Enter 2 to Grayscale Filter your image.\n");
 	
 		fgets(input_array,INPUTLEN, stdin);
+		
+		for ( i = 0; i < INPUTLEN; i++ ) 
+		{
+			if ( input_array[i] == '\n' ) 
+			{
+				input_array[i] = '\0';
+				break;
+			}
+		}	
 	
 		printf("You selected %s! \n", input_array);
 	}
