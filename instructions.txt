@@ -19,3 +19,13 @@ g++ -O2 -o <outputfile name> <file-name.cpp> `Magick++-config
 notice that that is a capital O2 not a zero 2
 
 
+You can also simply go to the directory where the program you want to run is located and copy the 
+compiler.sh script and type:
+
+./compiler.sh
+
+to compile the program.  (NOTE: you may need to change the name of the program within the .sh file)
+
+
+
+
