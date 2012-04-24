@@ -46,7 +46,7 @@ void toGrayscale(string filename);
 bool validateSelection(char user_input, char acceptable_input[20]);
 
 // Need to rename main() for CUTE testing to avoid conflict with CUTE main...
-int main()
+int FOOmain()
 {	
 	char pic_name[PICLEN];  // character array to hold name of the picture the user wants to select
 	char input_array[INPUTLEN];

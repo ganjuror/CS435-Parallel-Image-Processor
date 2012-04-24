@@ -1,0 +1,31 @@
+Simple directions on how to use the program:
+
+Install imagemagick++ on your (hopefully linux based) computer
+
+To do so use apt-get
+
+sudo apt-get install imagemagick --fix-missing
+
+sudo apt-get install libmagick++-dev
+
+if you can type Magick++-config and get a response other than an error 
+YOU GOT IT!
+
+Now if you want to run the program make sure to use c++ in the following way
+
+g++ -O2 -fopenmp -o <outputfile name> <file-name.cpp> `Magick++-config 
+--cppflags --cxxflags --ldflags --libs`
+
+notice that that is a capital O2 not a zero 2
+
+
+You can also simply go to the directory where the program you want to run is located and copy the 
+compiler.sh script and type:
+
+./compiler.sh
+
+to compile the program.  (NOTE: you may need to change the name of the program within the .sh file)
+
+
+
+
