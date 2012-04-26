@@ -1,6 +1,5 @@
 /* 
-	Program: Main program (calls subfunction)
-	Author:David Dvorak, Shaun Piazza
+	Program: Main program (calls subfun, River Hume
 	Purpose:allows user input to select an input file, a filter, and whether or not it should run parallel, it should then output a file named 			output.png with the applied filter
 
 ***********************************************************NOTICE************************************************************************************
