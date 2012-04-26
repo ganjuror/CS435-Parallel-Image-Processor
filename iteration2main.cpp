@@ -204,14 +204,14 @@ int main()
 
 		if(node_array[0] == 'y' || node_array[0] == 'Y')
 		{
-			#pragma omp parallel
-			{
 				gettimeofday(&start, NULL);
 				
 				//Call redfilter with pic_name as its parameter
-				redfilter(pic_name);
-				// Uncomment the usleep() function below to test the timer
-				//usleep(9000);
+				
+				#pragma omp parallel
+				{				
+					redfilter(pic_name);
+				}
 				
 				gettimeofday(&end, NULL);
 
@@ -221,7 +221,6 @@ int main()
 				mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
 
 				printf("Elapsed time: %ld milliseconds\n", mtime);
-			}
 		}
 		else
 		{
@@ -298,14 +297,14 @@ int main()
 		
 		if(node_array[0] == 'y' || node_array[0] == 'Y')
 		{
-			#pragma omp parallel
-			{
 				gettimeofday(&start, NULL);
 				
 				//Call redfilter with pic_name as its parameter
-				toGrayscale(pic_name);
-				// Uncomment the usleep() function below to test the timer
-				//usleep(9000);
+
+				#pragma omp parallel
+				{				
+					toGrayscale(pic_name);			
+				}			
 				
 				gettimeofday(&end, NULL);
 
@@ -315,7 +314,7 @@ int main()
 				mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
 
 				printf("Elapsed time: %ld milliseconds\n", mtime);
-			}
+			
 		}
 		else
 		{
@@ -323,9 +322,7 @@ int main()
 			
 			//Call redfilter with pic_name as its parameter
 			toGrayscale(pic_name);
-			// Uncomment the usleep() function below to test the timer
-			//usleep(9000);
-			
+
 			gettimeofday(&end, NULL);
 
 			seconds  = end.tv_sec  - start.tv_sec;
