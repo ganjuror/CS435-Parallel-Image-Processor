@@ -100,9 +100,7 @@ int main()
 	}
 	
 	printf("You selected %s as your picture\n", pic_name);	
-	/* "Unit test" */
-	printf("EXPECTED: %s ACTUAL: %s\n", pic_name, pic_name);
-	/* End of test */
+
 	
 	printf ("**********************************************\n");
 	printf ("Please enter a number to select from the following choices: \n");
@@ -121,9 +119,6 @@ int main()
 	}
 	
 	printf("You selected %s! \n", input_array);
-	/* "Unit test" */
-	printf("EXPECTED: 1 or 2, ACTUAL: %s\n", input_array);
-	/* End of test */
 	
 	
 	/* ERROR CHECKING LOOP */
@@ -175,10 +170,7 @@ int main()
 		}		
 		
 		printf("You selected %s \n", node_array);
-		/* "Unit test" */
-		printf("EXPECTED: yes or no ACTUAL: %s\n", node_array);
-		/* End of test */
-		
+
 		/* ERROR CHECKING LOOP */
 		char good_input[4] = {'y','n','Y','N'};
 		while(!validateSelection(input_array[0], good_input))
@@ -268,9 +260,7 @@ int main()
 		}		
 		
 		printf("You selected %s \n", node_array);
-		/* "Unit test" */
-		printf("EXPECTED: yes or no ACTUAL: %s\n", node_array);
-		/* End of test */
+
 
 		/* ERROR CHECKING LOOP */
 		char good_input[4] = {'y','n','Y','N'};
