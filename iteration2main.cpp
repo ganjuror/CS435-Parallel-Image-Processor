@@ -158,7 +158,7 @@ int main()
 		printf("Would you like to run this in parallel?\n");
 		printf("y or n: \n");
 		
-		fgets(node_array,INPUTLEN, stdin );
+		fgets(node_array,INPUTLEN, stdin);
 		
 		for ( i = 0; i < INPUTLEN; i++ ) 
 		{
@@ -169,29 +169,28 @@ int main()
 			}
 		}		
 		
-		printf("You selected %s \n", node_array);
 
 		/* ERROR CHECKING LOOP */
 		char good_input[4] = {'y','n','Y','N'};
-		while(!validateSelection(input_array[0], good_input))
+		while(!validateSelection(node_array[0], good_input))
 		{
 			printf ("**********************************************\n");
 			printf ("You entered an incorrect value, please try again.\n");
 			printf("Would you like to run this in parallel?\n");
 			printf("y or n: \n");
 		
-			fgets(input_array,INPUTLEN, stdin);
+			fgets(node_array,INPUTLEN, stdin);
 
 			for ( i = 0; i < INPUTLEN; i++ )
 			{
-				if ( input_array[i] == '\n' )
+				if ( node_array[i] == '\n' )
 				{
-					input_array[i] = '\0';
+					node_array[i] = '\0';
 					break;
 				}
 			}
 
-			printf("You selected %s! \n", input_array);
+			printf("You selected %s! \n", node_array);
 		}
 		/* **** END ERROR CHECKING LOOP **** */
 
@@ -264,25 +263,25 @@ int main()
 
 		/* ERROR CHECKING LOOP */
 		char good_input[4] = {'y','n','Y','N'};
-		while(!validateSelection(input_array[0], good_input))
+		while(!validateSelection(node_array[0], good_input))
 		{
 			printf ("**********************************************\n");
 			printf ("You entered an incorrect value, please try again.\n");
 			printf("Would you like to run this in parallel?\n");
 			printf("y or n: \n");
 
-			fgets(input_array,INPUTLEN, stdin);
+			fgets(node_array,INPUTLEN, stdin);
 
 			for ( i = 0; i < INPUTLEN; i++ )
 			{
-				if ( input_array[i] == '\n' )
+				if ( node_array[i] == '\n' )
 				{
-					input_array[i] = '\0';
+					node_array[i] = '\0';
 					break;
 				}
 			}
 
-			printf("You selected %s! \n", input_array);
+			printf("You selected %s! \n", node_array);
 		}
 		/* **** END ERROR CHECKING LOOP **** */
 		
